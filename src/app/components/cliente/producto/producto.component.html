@@ -1,0 +1,28 @@
+
+<div class="d-flex" *ngIf="producto">
+
+    <div class="col-6">
+        <img [src]="producto.fotoProducto1" class="card-img-top img-fluid" [alt]="" style="height: 320px;">
+        <div class="card-block mt-2">
+            <button (click)="volver()" type="button" class="btn btn-outline-danger btn-block mt-3">Volver</button>
+        </div>
+    </div>
+    <div class="col-6">
+        <h3>{{producto.descripcionProducto}}</h3>
+        <p>Precio: {{producto.precioProducto | currency:'S/. '}}</p>
+        <div class="form-group row">
+            <label class="form-control col-6">Seleccionar cantidad: </label>
+             <input class="form-control col-6 text-center" type="number" (change)="multiplicar($event.target.value)" [ngModel]="cantidad">
+        </div>
+
+        <div class="form-group row">
+            <label class="form-control col-6">Total: </label>
+             <input disabled class="form-control col-6 text-center" type="number" [ngModel]="mostrarPrecio | currency:'S/. '">
+        </div>
+
+        <div class="card-block mt-5">
+            <button (click)="agregar()" type="button" class="btn btn-outline-primary btn-block mt-3">Agregar</button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="form-group col-4">
+    <label for="exampleFormControlSelect1">Seleccione por categoría</label>
+    <select (change)="capturar($event.target.value)" class="form-control">
+        <option value="0">Ver todos los productos</option>
+        <option *ngFor="let categoria of categorias; let i = index" [value]="categoria.idCategoria" >{{categoria.nombreCategoria}}</option>
+    </select>
+</div>
+<div class="card-columns">
+
+    <div *ngFor="let producto of productos;let i = index" class="card animated fadeIn fast p-3">
+        <!-- <img [src]=" heroe.img" class="card-img-top img-fluid" [alt]="heroe.nombre"> -->
+        <div class="card-block">
+            <h5 class="card-title">{{producto.nombreProducto}}</h5>
+            <p class="card-text">Precio: {{producto.precioProducto | currency:'S/. '}}</p>
+
+        </div>
+        <button (click)="verProducto(producto.idProducto)" type="button" class="btn btn-outline-primary btn-block">Ver
+            más...</button>
+    </div>
+</div>
