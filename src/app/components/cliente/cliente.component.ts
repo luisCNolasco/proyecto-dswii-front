@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeleccionService } from '../../services/seleccion.service';
 
 @Component({
   selector: 'app-cliente',
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class ClienteComponent implements OnInit {
 
   nombreCliente:string = "Luis Carranza";
-  constructor() { }
+
+  constructor() {
+
+   }
 
   ngOnInit(): void {
   }

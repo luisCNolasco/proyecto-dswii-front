@@ -9,9 +9,11 @@
 
     <div *ngFor="let producto of productos;let i = index" class="card animated fadeIn fast p-3">
         <!-- <img [src]=" heroe.img" class="card-img-top img-fluid" [alt]="heroe.nombre"> -->
-        <div class="card-block">
+        <img src="https://i.blogs.es/ca32d0/pcbuild2/450_1000.jpg" class="card-img-top img-fluid" alt="">
+        <div class="card-block mt-3">
             <h5 class="card-title">{{producto.nombreProducto}}</h5>
             <p class="card-text">Precio: {{producto.precioProducto | currency:'S/. '}}</p>
+            <p class="card-text mb-3">Stock: {{producto.stockProducto }}</p>
 
         </div>
         <button (click)="verProducto(producto.idProducto)" type="button" class="btn btn-outline-primary btn-block">Ver

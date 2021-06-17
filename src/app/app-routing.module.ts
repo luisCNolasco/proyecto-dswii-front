@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'cliente',component:ClienteComponent,
   children:[
-    {path:'perfil',component:PerfilComponent},
+    {path:'perfilCliente',component:PerfilComponent},
     {path:'productos',component:ProductosComponent},
     {path:'producto/:id',component:ProductoComponent},
     {path:'servicios',component:ServiciosComponent},
@@ -32,8 +32,8 @@ const routes: Routes = [
     {path:'producto',component:CrudProductoComponent},
     {path:'servicio',component:CrudServicioComponent},
     {path:'usuario',component:CrudUsuarioComponent},
-    {path:'perfil',component:PerfilComponent},
-    {path:'**',pathMatch:'full',redirectTo:'perfil'}
+    {path:'perfilAdministrador',component:PerfilComponent},
+    {path:'**',pathMatch:'full',redirectTo:'perfilAdministrador'}
   ]},
   {path:'**',pathMatch:'full',redirectTo:'home'}
 ];

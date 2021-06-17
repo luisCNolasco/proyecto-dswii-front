@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
     <h4 class="navbar-brand" >Tech</h4>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -7,7 +7,7 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['servicios']">Servicios</a>
-          
+            </li>
 
         </ul>
         <ul class="navbar-nav">
@@ -15,12 +15,12 @@
                 <a class="nav-link" [routerLink]="['carrito']"><i class="bi bi-cart4"> Cesta</i></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{nombreCliente}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['perfil']">Perfil</a>
+                    <a class="dropdown-item" [routerLink]="['perfilCliente']">Perfil</a>
                     <a class="dropdown-item"[routerLink]="['pedidos']">Pedidos</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/home']">Cerrar sesión</a>

@@ -41,7 +41,7 @@ export class ProductosComponent implements OnInit {
   }
 
   capturar(valor:number){
-    console.log(valor)
+
     if(valor==0){
       this.cargarProductos();
     }

@@ -1,1 +1,35 @@
-<p>carrito works!</p>
+<div *ngIf="productosCarrito.length>=1">
+
+    <p class="text-center mt-3 h2">Productos Seleccionados</p>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Código producto</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total parcial</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let seleccion of productosCarrito;let i = index">
+        <td>{{seleccion.codigo}}</td>
+        <td>{{seleccion.nombre}}</td>
+        <td>{{seleccion.cantidad}}</td>
+        <td>{{seleccion.precio}}</td>
+        <td>{{seleccion.totalParcial}}</td>
+        <td class="text-center"><i style="cursor: pointer;" class="bi bi-trash-fill" (click)="eliminar(i)"></i></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <div class="d-flex flex-row-reverse">
+      <button class="btn btn-success">Registrar pedido</button>
+  </div>
+
+</div>
+<div *ngIf="productosCarrito.length<1" class="d-flex justify-content-center mt-4">
+    <p class="h4">No hay productos seleccionados</p>
+</div>

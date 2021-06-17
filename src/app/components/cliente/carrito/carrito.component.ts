@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SeleccionService } from '../../../services/seleccion.service';
+import { Seleccion } from '../../../models/Seleccion';
 
 @Component({
   selector: 'app-carrito',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarritoComponent implements OnInit {
 
-  constructor() { }
+  productosCarrito:Seleccion[]=[]
+  constructor( private serviceSeleccion:SeleccionService) { 
+  this.listarProductosSeleccionados();
+  }
 
   ngOnInit(): void {
+  }
+
+  listarProductosSeleccionados(){
+    this.productosCarrito= this.serviceSeleccion.getSelecionados();
+  }
+
+  eliminar(indice){
+    this.serviceSeleccion.eliminarSeleccion(indice);
+    this.listarProductosSeleccionados();
+    console.log(indice);
   }
 
 }

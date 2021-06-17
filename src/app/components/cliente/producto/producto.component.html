@@ -4,24 +4,26 @@
     <div class="col-6">
         <img [src]="producto.fotoProducto1" class="card-img-top img-fluid" [alt]="" style="height: 320px;">
         <div class="card-block mt-2">
-            <button (click)="volver()" type="button" class="btn btn-outline-danger btn-block mt-3">Volver</button>
+            <button (click)="volver()" type="button" class="btn btn-outline-danger mt-3">Volver</button>
         </div>
     </div>
     <div class="col-6">
         <h3>{{producto.descripcionProducto}}</h3>
-        <p>Precio: {{producto.precioProducto | currency:'S/. '}}</p>
-        <div class="form-group row">
-            <label class="form-control col-6">Seleccionar cantidad: </label>
-             <input class="form-control col-6 text-center" type="number" (change)="multiplicar($event.target.value)" [ngModel]="cantidad">
+        <p class="mt-4">Precio:<span class="ml-3"> {{producto.precioProducto | currency:'S/. '}}</span></p>
+        <p class="mt-4">Stock: <span class="ml-3"> {{producto.stockProducto}}</span>    </p>
+        <div class="form-group row ">
+          
+            <label class="col-6">Seleccionar cantidad:</label>
+             <input class="form-control col-6 text-center" type="number" min="1" (change)="multiplicar($event.target.value)" [ngModel]="cantidad">
         </div>
 
         <div class="form-group row">
-            <label class="form-control col-6">Total: </label>
-             <input disabled class="form-control col-6 text-center" type="number" [ngModel]="mostrarPrecio | currency:'S/. '">
+            <label class="col-6">Total:</label>
+            <p class="col-6 text-center text-danger">{{parcialTotal | currency:'S/. '}}</p>
         </div>
 
         <div class="card-block mt-5">
-            <button (click)="agregar()" type="button" class="btn btn-outline-primary btn-block mt-3">Agregar</button>
+            <button (click)="agregar()" type="button" class="btn btn-primary btn-block mt-3">Agregar</button>
         </div>
 
     </div>

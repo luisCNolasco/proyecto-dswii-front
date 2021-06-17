@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministradorComponent implements OnInit {
 
+  nombreAdministrador:string="Admin 007";
   constructor() { }
 
   ngOnInit(): void {
