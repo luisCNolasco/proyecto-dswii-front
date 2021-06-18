@@ -7,8 +7,8 @@
 </div>
 <div class="card-columns">
 
-    <div *ngFor="let producto of productos;let i = index" class="card animated fadeIn fast p-3">
-        <img [src]="producto.fotoProducto" class="card-img-top img-fluid" [alt]="producto.fotoProducto">
+    <div *ngFor="let producto of productos" class="card animated fadeIn fast p-3" >
+        <img [src]="producto.fotoProducto" class="card-img-top" [alt]="producto.fotoProducto">
         <div class="card-block mt-3">
             <h5 class="card-title">{{producto.nombreProducto}}</h5>
             <p class="card-text">Precio: {{producto.precioProducto | currency:'S/. '}}</p>
@@ -19,3 +19,4 @@
             más...</button>
     </div>
 </div>
+<br><br><br>

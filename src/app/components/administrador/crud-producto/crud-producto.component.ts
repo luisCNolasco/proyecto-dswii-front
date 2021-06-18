@@ -6,7 +6,6 @@ import { CategoriaService } from '../../../services/categoria.service';
 import { ProveedorService } from '../../../services/proveedor.service';
 import { Categoria } from '../../../models/Categoria';
 import { Proveedor } from '../../../models/Proveedor';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 
 import { finalize } from 'rxjs/operators';
@@ -35,6 +34,9 @@ export class CrudProductoComponent {
   private downloadURL: string;
   urlImagen: string;
 
+  mensajeBoton:string='Registrar Producto';
+  mensajeAccionCrud:string='Producto registrado';
+
   constructor(
     private serviceProducto: ProductoService,
     private serviceCategoria: CategoriaService,
@@ -50,25 +52,32 @@ export class CrudProductoComponent {
   }
 
   editar(modalRegistro,obj:Producto){
+    this.mensajeBoton='Actualizar Producto'
+    this.mensajeAccionCrud="Producto actualizado"
       this.modal.open(modalRegistro);
      this.producto=obj;
   }
 
   editarProducto(){
-    this.serviceProducto.saveProducto(this.producto).subscribe((data) => {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Producto actualizado',
-        showConfirmButton: false,
-        timer: 1500,
+     
+    if(this.downloadURL===''){
+      this.serviceProducto.saveProducto(this.producto).subscribe((data) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: this.mensajeAccionCrud,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.producto = new Producto();
+      this.cerrar();
+      this.router.navigate(['administrador/producto']);
+      this.cargarProductos();
+      this.downloadURL='';
       });
-      this.producto = new Producto();
-    this.cerrar();
-    this.router.navigate(['administrador/producto']);
-    this.cargarProductos();
-    });
-    
+    }else{ 
+      this.saveProducto();
+    }
   }
 
   eliminar(id: number) {
@@ -91,21 +100,21 @@ export class CrudProductoComponent {
     this.producto.estadoProducto = 1;
     this.producto.fotoProducto = this.downloadURL;
 
-    console.log('Producto que se está enviando ', this.producto);
 
     this.serviceProducto.saveProducto(this.producto).subscribe((data) => {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Producto agregado',
+        title: this.mensajeAccionCrud,
         showConfirmButton: false,
         timer: 1500,
       });
+      this.producto = new Producto();
+      this.cerrar();
+      this.router.navigate(['administrador/producto']);
+      this.cargarProductos();
     });
-    this.producto = new Producto();
-    this.cerrar();
-    this.router.navigate(['administrador/producto']);
-    this.cargarProductos();
+   
   }
 
   imagenEscogida(event) {
@@ -146,6 +155,8 @@ export class CrudProductoComponent {
   }
 
   verModal(modalRegistro) {
+    this.mensajeBoton="Registrar producto"
+    this.mensajeAccionCrud="Producto registrado"
     this.modal.open(modalRegistro);
   }
   cerrar() {
