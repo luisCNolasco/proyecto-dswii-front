@@ -14,13 +14,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let seleccion of productosCarrito;let i = index">
+      <tr *ngFor="let seleccion of productosCarrito">
         <td>{{seleccion.codigo}}</td>
         <td>{{seleccion.nombre}}</td>
         <td>{{seleccion.cantidad}}</td>
         <td>{{seleccion.precio}}</td>
         <td>{{seleccion.totalParcial}}</td>
-        <td class="text-center"><i style="cursor: pointer;" class="bi bi-trash-fill" (click)="eliminar(i)"></i></td>
+        <td class="text-center"><i style="cursor: pointer;" class="bi bi-trash-fill" (click)="eliminarSeleccion(seleccion.codigo)"></i></td>
       </tr>
       
     </tbody>

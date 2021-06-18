@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SeleccionService } from '../../../services/seleccion.service';
 import { Seleccion } from '../../../models/Seleccion';
+import { BoletaService } from '../../../services/boleta.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carrito',
@@ -9,29 +11,49 @@ import { Seleccion } from '../../../models/Seleccion';
 })
 export class CarritoComponent implements OnInit {
   productosCarrito: Seleccion[] = [];
-  constructor(private serviceSeleccion: SeleccionService) {
+  constructor(private serviceSeleccion: SeleccionService,
+              private serviceBoleta:BoletaService) {
     this.listarProductosSeleccionados();
   }
 
   ngOnInit(): void {}
 
   listarProductosSeleccionados() {
-    this.productosCarrito = this.serviceSeleccion.getSelecionados();
+    this.serviceSeleccion.getSelecionados().subscribe((data) => {
+      this.productosCarrito = data;
+    });
   }
 
-  eliminar(indice) {
-    this.serviceSeleccion.eliminarSeleccion(indice);
-    this.listarProductosSeleccionados();
-    console.log(indice);
+  eliminarSeleccion(idProducto) {
+    this.serviceSeleccion.eliminarSeleccion(idProducto).subscribe((data) => {
+      this.listarProductosSeleccionados();
+    });
   }
 
   confirmarPedido() {
-    console.log('Pedido confirmado');
-    this.productosCarrito.forEach((seleccion) => {
-      console.log("producto que se envia: ",seleccion)
-      this.serviceSeleccion.enviarProductos(seleccion).subscribe((data) => {
-        console.log(data);
-      });
+    console.log("generando boleta")
+   
+    Swal.fire({
+      title: '¿Confirmar compra?',
+      showCancelButton: true,
+      confirmButtonText: `Aceptar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serviceBoleta.registrarBoleta().subscribe((data)=>{
+          if (data==1) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Pedido Generado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+          this.listarProductosSeleccionados();
+        });
+      }
     });
+
+    
   }
 }

@@ -56,14 +56,16 @@ export class ProductoComponent implements OnInit {
     obj.cantidad = this.cantidad;
     obj.totalParcial = this.parcialTotal;
 
-    this.serviceSeleccion.agregarSeleccion(obj);
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Producto agregado',
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    this.serviceSeleccion.agregarSeleccion(obj).subscribe(data=>{
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title:'Producto agregado',
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    })
+    
     this.volver();
   }
 }

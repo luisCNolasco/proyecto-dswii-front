@@ -7,26 +7,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SeleccionService {
 
-  URL:string='http://localhost:8095/boleta/';
+  URL:string='http://localhost:8095/seleccion/';
   
   productosSeleccionados:Seleccion[]=[];
 
   constructor(private http:HttpClient) { }
 
   getSelecionados(){
-    return this.productosSeleccionados;
+    return this.http.get<Seleccion[]>(this.URL+"listarSeleccionados");
   }
 
   agregarSeleccion(obj:Seleccion){
-    this.productosSeleccionados.push(obj);
+    return this.http.post<Seleccion>(this.URL+"/agregarSeleccion",obj)
+
   }
 
-  eliminarSeleccion(indice:number){
-    this.productosSeleccionados.splice(indice,1);
+  eliminarSeleccion(idProducto:number){
+    return this.http.delete<Seleccion>(this.URL+"/eliminarSeleccion/"+idProducto);
   }
 
-   enviarProductos(seleccion:Seleccion){
-       return this.http.post(this.URL+"enviarProducto",seleccion);
-   
-  }
 }

@@ -3,14 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { SeleccionService } from './seleccion.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BoletaService {
+  URL: string = 'http://localhost:8095/boleta/';
 
-  URL:string='http://localhost:8095/boleta/';
+  constructor(
+    private http: HttpClient,
+    private serviceSeleccion: SeleccionService
+  ) {}
 
-  constructor(private http:HttpClient,
-              private serviceSeleccion:SeleccionService) { }
-
- 
+  registrarBoleta() {
+    return this.http.get<any>(this.URL + 'registrar');
+  }
 }
