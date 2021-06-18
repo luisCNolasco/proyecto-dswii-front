@@ -13,6 +13,7 @@ import { CrudProductoComponent } from './components/administrador/crud-producto/
 import { CrudServicioComponent } from './components/administrador/crud-servicio/crud-servicio.component';
 import { CrudUsuarioComponent } from './components/administrador/crud-usuario/crud-usuario.component';
 import { CarritoComponent } from './components/cliente/carrito/carrito.component';
+import { EditProductoComponent } from './components/administrador/edit-producto/edit-producto.component';
 
 
 const routes: Routes = [

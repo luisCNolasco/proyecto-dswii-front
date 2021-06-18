@@ -10,7 +10,6 @@ export class Producto {
     estadoProducto: number;
     categoria: Categoria;
     proveedor: Proveedor;
-    fotoProducto1: string;
-    fotoProducto2: string;
+    fotoProducto: string;
     descripcionProducto:string;
 }

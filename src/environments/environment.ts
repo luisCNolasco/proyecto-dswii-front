@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig:{
+    apiKey: "AIzaSyAiiLK7rVXv028-vFmevHKLU51cpWfzurU",
+    authDomain: "veterinaria-imgs.firebaseapp.com",
+    projectId: "veterinaria-imgs",
+    storageBucket: "veterinaria-imgs.appspot.com",
+    messagingSenderId: "849513441713",
+    appId: "1:849513441713:web:1d0e568d59b82f1042f590"
+  }  
 };
 
 /*

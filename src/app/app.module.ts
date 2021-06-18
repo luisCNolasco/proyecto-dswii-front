@@ -20,6 +20,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { CarritoComponent } from './components/cliente/carrito/carrito.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination'
+
+/*Firebase */
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -45,7 +52,12 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    NgxPaginationModule
 
   ],
   providers: [],
