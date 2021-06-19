@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { SeleccionService } from '../../services/seleccion.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/Usuario';
+import { BoletaService } from '../../services/boleta.service';
+import { Boleta } from '../../models/Boleta';
 
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
   styleUrls: ['./cliente.component.css']
 })
-export class ClienteComponent implements OnInit {
+export class ClienteComponent{
 
-  nombreCliente:string = "Luis Carranza";
+  usuario:Usuario;
 
-  constructor() {
-
+  constructor(private serviceUsuario:UsuarioService,
+              private serviceBoleta:BoletaService) {
+    this.usuario = this.serviceUsuario.obtenerUsuario();
    }
+  
+  
 
-  ngOnInit(): void {
-  }
 
 }

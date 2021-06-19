@@ -1,1 +1,25 @@
-<p>pedidos works!</p>
+<h3 class="text-center">BOLETAS</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center" style="width: 25%;">Número boleta </th>
+            <th class="text-center" style="width: 25%;">Fecha</th>
+            <th class="text-center" style="width: 25%;">Estado</th>
+            <th class="text-center" style="width: 25%;">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let boleta of boletas">
+            <td class="text-center">{{boleta.numeroBoleta}}</td>
+            <td class="text-center">{{boleta.fecha}}</td>
+            <td *ngIf="boleta.estado ==1" class="text-center">Pedido en Proceso</td>
+            <td *ngIf="boleta.estado ==2" class="text-center">Pedido enviado</td>
+            <td *ngIf="boleta.estado ==3" class="text-center">Pedido entregado</td>
+            
+            <td class="text-center">
+                <i style="cursor: pointer;" class="bi bi-trash-fill" (click)="eliminar(producto.idProducto)"></i>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
