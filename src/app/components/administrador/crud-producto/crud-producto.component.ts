@@ -23,7 +23,6 @@ export class CrudProductoComponent {
   categorias: Categoria[] = [];
   proveedores: Proveedor[] = [];
 
-  //producto: Producto = new Producto();
   producto: Producto = new Producto();
 
   productoEdit:Producto;

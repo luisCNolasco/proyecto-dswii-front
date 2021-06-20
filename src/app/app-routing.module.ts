@@ -15,6 +15,7 @@ import { CrudUsuarioComponent } from './components/administrador/crud-usuario/cr
 import { CarritoComponent } from './components/cliente/carrito/carrito.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DetalleBoletaComponent } from './components/cliente/detalle-boleta/detalle-boleta.component';
+import { CrudBoletaComponent } from './components/administrador/crud-boleta/crud-boleta.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
     {path:'servicio',component:CrudServicioComponent},
     {path:'usuario',component:CrudUsuarioComponent},
     {path:'perfilAdministrador',component:PerfilComponent},
+    {path:'boletas',component:CrudBoletaComponent},
     {path:'**',pathMatch:'full',redirectTo:'producto'}
   ]},
   {path:'**',pathMatch:'full',redirectTo:'home'}

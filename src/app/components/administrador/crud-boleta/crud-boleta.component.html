@@ -1,0 +1,85 @@
+<h3 class="text-center">BOLETAS</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center" style="width: 25%;">Número boleta </th>
+            <th class="text-center" style="width: 25%;">Fecha</th>
+            <th class="text-center" style="width: 25%;">Estado</th>
+            <th class="text-center" style="width: 25%;">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let boleta of boletas | paginate:{itemsPerPage:5,currentPage:p}">
+            <td class="text-center">{{boleta.numeroBoleta}}</td>
+            <td class="text-center">{{boleta.fecha | date: 'dd/MM/yyyy'}}</td>
+            <td *ngIf="boleta.estado ==1" class="text-center">Pedido en Proceso</td>
+            <td *ngIf="boleta.estado ==2" class="text-center">Pedido enviado</td>
+            <td *ngIf="boleta.estado ==3" class="text-center">Pedido entregado</td>
+
+            <td class="text-center">
+                <button (click)="detallePedido(modalEstado,boleta)"
+                    class="btn btn-outline-success">Actualizar</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+<ng-template style="width: 100%;" #modalEstado let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <span>Actualizar pedido</span>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="cerrar()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Número</label>
+                    <input [(ngModel)]="boletaEdit.numeroBoleta" type="text" class="form-control" id="boleta" name="boleta">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <p [(ngModel)]="boletaEdit.fecha" type="text" class="form-control" id="fecha" name="fecha">{{boletaEdit.fecha | date: 'dd/MM/yyyy'}}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Estado</label>
+                   <p *ngIf="boletaEdit.estado ==1">En proceso</p>
+                   <p *ngIf="boletaEdit.estado ==2">Enviado</p>
+                   <p *ngIf="boletaEdit.estado ==3">Entregado</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Estado</label><br>
+                    <select [(ngModel)]="boletaEdit.estado" class="form-control" id="estado" name="estado">
+                        <option value="1">En proceso</option>
+                        <option value="2">Enviado</option>
+                        <option value="3">Entregado</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button (click)="actualizarEstado()" class="btn btn-primary">Actualizar estado</button>
+            
+    </div>
+
+</ng-template>

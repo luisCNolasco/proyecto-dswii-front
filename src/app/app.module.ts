@@ -28,6 +28,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { DetalleBoletaComponent } from './components/cliente/detalle-boleta/detalle-boleta.component';
+import { CrudBoletaComponent } from './components/administrador/crud-boleta/crud-boleta.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { DetalleBoletaComponent } from './components/cliente/detalle-boleta/deta
     CrudServicioComponent,
     CrudUsuarioComponent,
     CarritoComponent,
-    DetalleBoletaComponent
+    DetalleBoletaComponent,
+    CrudBoletaComponent
   ],
   imports: [
     BrowserModule,
