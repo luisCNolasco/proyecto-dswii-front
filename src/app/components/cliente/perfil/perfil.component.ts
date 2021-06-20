@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+prueba:string;
+  constructor() { 
+console.log(this.prueba);
+  }
 
   ngOnInit(): void {
   }

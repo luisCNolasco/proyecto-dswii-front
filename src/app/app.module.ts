@@ -27,6 +27,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { DetalleBoletaComponent } from './components/cliente/detalle-boleta/detalle-boleta.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { environment } from '../environments/environment';
     CrudProductoComponent,
     CrudServicioComponent,
     CrudUsuarioComponent,
-    CarritoComponent
+    CarritoComponent,
+    DetalleBoletaComponent
   ],
   imports: [
     BrowserModule,

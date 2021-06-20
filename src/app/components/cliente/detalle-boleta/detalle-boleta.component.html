@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card-block mt-2">
+        <button (click)="volver()" type="button" class="btn btn-outline-danger mt-3">Volver</button>
+    </div>
+    <br>
+    <h2>Número de Boleta: {{boleta}}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Código producto</th>
+                <th class="text-center">Nombre producto</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Cantidad</th>
+                <th class="text-center">SubTotal</th>
+
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of detalleBoleta">
+
+                <td class="text-center">{{d.producto.idProducto}}</td>
+                <td class="text-center">{{d.producto.nombreProducto}}</td>
+                <td class="text-center">{{d.producto.precioProducto}}</td>
+                <td class="text-center">{{d.cantidad}}</td>
+                <td class="text-center">{{d.precio}}</td>
+                <td class="text-center">
+                    <img style="width: 50px; height: 50px;" [src]="d.producto.fotoProducto" class="card-img-top"
+                        [alt]="d.producto.fotoProducto">
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div>
+        <p class="text-right">Total de compra: <span class="text-danger ml-3"> {{precioTotal | currency:'S/. '}}</span></p>
+    </div>
+</div>

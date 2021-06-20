@@ -16,6 +16,11 @@ export class UsuarioService {
 
   URL: string = 'http://localhost:8095/usuario';
 
+
+getUsuarios(){
+  return this.http.get<Usuario[]>(this.URL+"/listar");
+}
+
   iniciarSesion(gmail: string, password) {
     return this.http
       .get<Usuario>(this.URL + '/iniciarSesion/' + gmail + '/' + password)
@@ -27,13 +32,14 @@ export class UsuarioService {
       );
   }
 
+  
   estaAutenticado(): boolean {
     if (this.autenticado) {
       return true;
     }
   }
-  obtenerUsuario() {
-    return this.usuario;
+  usuarioSesion() {
+    return this.http.get<Usuario>(this.URL+"/usuarioSesion");
   }
   guardarUsuario(obj: Usuario) {
     this.usuario = obj;

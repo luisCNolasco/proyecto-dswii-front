@@ -11,13 +11,13 @@
     <tbody>
         <tr *ngFor="let boleta of boletas">
             <td class="text-center">{{boleta.numeroBoleta}}</td>
-            <td class="text-center">{{boleta.fecha}}</td>
+            <td class="text-center">{{boleta.fecha | date: 'dd/MM/yyyy'}}</td>
             <td *ngIf="boleta.estado ==1" class="text-center">Pedido en Proceso</td>
             <td *ngIf="boleta.estado ==2" class="text-center">Pedido enviado</td>
             <td *ngIf="boleta.estado ==3" class="text-center">Pedido entregado</td>
             
             <td class="text-center">
-                <i style="cursor: pointer;" class="bi bi-trash-fill" (click)="eliminar(producto.idProducto)"></i>
+               <button (click)="detallePedido(boleta.numeroBoleta)" class="btn btn-outline-success">Detalles</button>
             </td>
         </tr>
 

@@ -24,4 +24,8 @@ export class BoletaService {
   listarBoletas(){
     return this.http.get<Boleta[]>(this.URL+"listar")
   }
+
+  detalleBoleta(numeroBoleta:number){
+    return this.http.get<any[]>(this.URL+"detalleBoleta/"+numeroBoleta);
+  }
 }

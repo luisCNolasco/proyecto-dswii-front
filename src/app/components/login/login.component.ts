@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
       .subscribe((data) => {
         this.usuarioObtenido = data;
         this.serviceUsuario.guardarUsuario(this.usuarioObtenido);
-
         if (this.usuarioObtenido.tipoUsuario.idTipoUsuario == 1) {
+
           this.router.navigateByUrl('/administrador');
         }
         if (this.usuarioObtenido.tipoUsuario.idTipoUsuario == 2) {

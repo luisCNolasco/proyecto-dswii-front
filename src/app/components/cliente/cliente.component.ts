@@ -14,8 +14,14 @@ export class ClienteComponent{
   usuario:Usuario;
 
   constructor(private serviceUsuario:UsuarioService,
-              private serviceBoleta:BoletaService) {
-    this.usuario = this.serviceUsuario.obtenerUsuario();
+            ) {
+    this.usuarioSesion();
+   }
+
+   usuarioSesion(){
+    this.serviceUsuario.usuarioSesion().subscribe(data=>{
+      this.usuario = data;
+    })
    }
   
   

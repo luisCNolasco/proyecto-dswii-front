@@ -1,1 +1,33 @@
-<p>crud-usuario works!</p>
+<div class="container mt-2">
+    <button class="btn btn-primary mt" (click)="verModal()">Registrar Usuario</button>
+
+    <p class="text-center mt-3 h2">Usuarios</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 5%;">ID </th>
+                <th class="text-center" style="width: 15%;">DNI</th>
+                <th class="text-center" style="width: 20%;">Nombre</th>
+                <th class="text-center" style="width: 20%;">Distrito</th>
+                <th class="text-center" style="width: 15%;">Tipo usuario</th>
+                <th class="text-center" style="width: 15%;">Estado</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios | paginate:{itemsPerPage:5,currentPage:p}">
+                <td class="text-center">{{usuario.idUsuario}}</td>
+                <td class="text-center">{{usuario.dniUsuario}}</td>
+                <td class="text-center">{{usuario.nombreUsuario}}</td>
+                <td class="text-center">{{usuario.distrito.nombreDistrito}}</td>
+                <td class="text-center">{{usuario.tipoUsuario.nombreTipoUsuario}}</td>
+                <td *ngIf="usuario.estadoUsuario==1" class="text-center">Activo</td>
+                <td *ngIf="usuario.estadoUsuario==2" class="text-center">Inactivo</td>
+
+
+            </tr>
+
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>

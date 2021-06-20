@@ -1,18 +1,20 @@
-<div  class="contenedor">
-    <img class="logo" src="https://i.linio.com/p/57e93701a2b640ac31eb18d4100f955e-catalog.jpg" alt="">
-    <form >
-        <!-- autocomplete="off" -->
-  
-    <div class="form-group">
-        <label>Usuario:</label>
-        <input [(ngModel)]="usuario" type="text" name="login" class="form-control">
+<div class="contenedor">
+    <img class="logo"
+        src="https://firebasestorage.googleapis.com/v0/b/veterinaria-imgs.appspot.com/o/productos%2Fportada.jpg?alt=media&token=aea0b6e1-3d1b-4ab1-88ab-b57dd8615303"
+        alt="logo">
+        <br>
+    <form autocomplete="off">
+
+        <div class="form-group">
+            <label>Usuario:</label>
+            <input [(ngModel)]="usuario" type="text" name="login" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input [(ngModel)]="password" type="password" name="pass" class="form-control">
+        </div>
+        <input (click)="iniciarSesion()" type="submit" value="Ingresar" class="btn btn-primary btn-block">
+    </form>
+    <div class="text-center">
+        <a href="http://localhost:8086/Spring-Articulo-SOAP/index.jsp" class="registrarse"> Registrarse</a>
     </div>
-    <div class="form-group">
-        <label>Password:</label>
-        <input [(ngModel)]="password" type="password" name="pass" class="form-control">
-    </div>
-    <input (click)="iniciarSesion()" type="submit" value="Ingresar" class="btn btn-primary btn-block">
-</form>
-<div class="text-center">
-    <a href="http://localhost:8086/Spring-Articulo-SOAP/index.jsp" class="registrarse"> Registrarse</a>
-</div>
