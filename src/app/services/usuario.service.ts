@@ -14,16 +14,16 @@ export class UsuarioService {
     this.estaAutenticado();
   }
 
-  URL: string = 'http://localhost:8095/usuario';
+  URL: string = 'http://localhost:8095/usuario/';
 
 
 getUsuarios(){
-  return this.http.get<Usuario[]>(this.URL+"/listar");
+  return this.http.get<Usuario[]>(this.URL+"listar");
 }
 
   iniciarSesion(gmail: string, password) {
     return this.http
-      .get<Usuario>(this.URL + '/iniciarSesion/' + gmail + '/' + password)
+      .get<Usuario>(this.URL + 'iniciarSesion/' + gmail + '/' + password)
       .pipe(
         map((resp) => {
           this.autenticado = true;
@@ -40,6 +40,10 @@ getUsuarios(){
   }
   usuarioSesion() {
     return this.http.get<Usuario>(this.URL+"/usuarioSesion");
+  }
+
+  cerrarSesion(){
+    return this.http.get(this.URL+"cerrarSesion");
   }
 
 }

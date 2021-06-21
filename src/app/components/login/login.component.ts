@@ -4,6 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/Usuario';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -41,4 +42,5 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
 }
