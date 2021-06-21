@@ -41,10 +41,5 @@ getUsuarios(){
   usuarioSesion() {
     return this.http.get<Usuario>(this.URL+"/usuarioSesion");
   }
-  guardarUsuario(obj: Usuario) {
-    this.usuario = obj;
-  }
-  borrarUsuario(){
-    this.usuario=null;
-  }
+
 }
