@@ -23,8 +23,5 @@ export class ClienteComponent{
       this.usuario = data;
     })
    }
-  
-  
-
 
 }

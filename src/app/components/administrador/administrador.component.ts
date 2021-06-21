@@ -28,7 +28,6 @@ export class AdministradorComponent implements OnInit {
   usuarioSesion(){
     this.serviceUsuario.usuarioSesion().subscribe(data=>{
       this.administrador = data;
-      console.log(data)
     })
   }
   

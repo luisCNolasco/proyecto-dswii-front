@@ -11,7 +11,6 @@ export class BoletaService {
 
   constructor(
     private http: HttpClient,
-    private serviceSeleccion: SeleccionService
   ) {}
 
   registrarBoleta() {
@@ -27,5 +26,9 @@ export class BoletaService {
 
   detalleBoleta(numeroBoleta:number){
     return this.http.get<any[]>(this.URL+"detalleBoleta/"+numeroBoleta);
+  }
+
+  actualizarEstadoBoleta(estado:number,numeroBoleta:number){
+    return this.http.get<number>(this.URL+"actualizar/"+estado+"/"+numeroBoleta);
   }
 }

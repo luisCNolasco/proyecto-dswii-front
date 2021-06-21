@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Boleta } from '../../../models/Boleta';
 import { BoletaService } from '../../../services/boleta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crud-boleta',
@@ -28,6 +29,22 @@ export class CrudBoletaComponent implements OnInit {
     this.serviceBoleta.listarBoletas().subscribe((data) => {
       this.boletas = data;
     });
+  }
+
+  actualizarEstado(estado,numeroBoleta){
+    this.serviceBoleta.actualizarEstadoBoleta(estado,numeroBoleta).subscribe(data=>{
+      if(data==1){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Estado de Pedido actualizado',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.listarBoletas();
+        this.cerrar();
+      }
+    })
   }
 
   cerrar() {

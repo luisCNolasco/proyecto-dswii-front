@@ -39,10 +39,10 @@
     <div class="modal-body">
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <div class="form-group">
-                    <label>Número</label>
-                    <input [(ngModel)]="boletaEdit.numeroBoleta" type="text" class="form-control" id="boleta" name="boleta">
+                    <label class="text-center">Número Pedido</label>
+                    <p class="text-center">{{boletaEdit.numeroBoleta}}</p>
                 </div>
             </div>
             
@@ -51,7 +51,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Fecha</label>
-                    <p [(ngModel)]="boletaEdit.fecha" type="text" class="form-control" id="fecha" name="fecha">{{boletaEdit.fecha | date: 'dd/MM/yyyy'}}</p>
+                    <p>{{boletaEdit.fecha | date: 'dd/MM/yyyy'}}</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button (click)="actualizarEstado()" class="btn btn-primary">Actualizar estado</button>
+        <button (click)="actualizarEstado(boletaEdit.estado,boletaEdit.numeroBoleta)" class="btn btn-primary">Actualizar estado</button>
             
     </div>
 
