@@ -3,8 +3,8 @@
         <button (click)="volver()" type="button" class="btn btn-outline-danger mt-3">Volver</button>
     </div>
     <br>
-    <h2>Número de Boleta: {{boleta}}</h2>
-    <table class="table table-striped">
+    <h2>Número de Boleta: {{boleta}} <span class="ml-5">Fecha: {{fechaBoleta | date: 'dd/MM/yyyy'}}</span></h2>
+    <table class="table table-striped mt-4">
         <thead>
             <tr>
                 <th class="text-center">Código producto</th>

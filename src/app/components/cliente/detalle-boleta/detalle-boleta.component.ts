@@ -5,45 +5,40 @@ import { BoletaService } from '../../../services/boleta.service';
 @Component({
   selector: 'app-detalle-boleta',
   templateUrl: './detalle-boleta.component.html',
-  styleUrls: ['./detalle-boleta.component.css']
+  styleUrls: ['./detalle-boleta.component.css'],
 })
 export class DetalleBoletaComponent implements OnInit {
-
-  detalleBoleta:any;
-  numeroBoleta:number;
-  boleta=0;
-  precioTotal=0;
+  detalleBoleta: any;
+  numeroBoleta: number;
+  boleta = 0;
+  precioTotal = 0;
+  fechaBoleta: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private serviceBoleta: BoletaService,
     private router: Router
-  ) { 
+  ) {
     this.verDetalleBoleta();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   verDetalleBoleta() {
     this.activatedRoute.params.subscribe((params) => {
       this.numeroBoleta = params['id'];
-      this.serviceBoleta.detalleBoleta(this.numeroBoleta).subscribe(data=>{
-        this.detalleBoleta=data;
+      this.serviceBoleta.detalleBoleta(this.numeroBoleta).subscribe((data) => {
+        this.detalleBoleta = data;
 
         for (let i = 0; i < this.detalleBoleta.length; i++) {
-        
-          this.precioTotal+=this.detalleBoleta[i].precio;
+          this.precioTotal += this.detalleBoleta[i].precio;
         }
-        this.boleta=this.detalleBoleta[0].boleta.numeroBoleta;
-   
-      })
-
+        this.boleta = this.detalleBoleta[0].boleta.numeroBoleta;
+        this.fechaBoleta= this.detalleBoleta[0].boleta.fecha;
+      });
     });
   }
-  
+
   volver() {
     this.router.navigate(['cliente/pedidos']);
   }
-
-
 }

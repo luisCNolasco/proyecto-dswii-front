@@ -88,7 +88,6 @@ export class CrudProductoComponent {
       if (result.isConfirmed) {
         this.serviceProducto.deleteProducto(id).subscribe((data) => {});
         Swal.fire('Producto eliminado', '', 'success');
-        //this.router.navigate(['administrador/producto']);
         this.cargarProductos();
       }
     });
